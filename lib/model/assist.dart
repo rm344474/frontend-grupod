@@ -1,15 +1,26 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class Assist {
-    int id;
-    String name;
-    String description;
+  int id;
+  String name;
+  String description;
   Assist({
     required this.id,
     required this.name,
     required this.description,
   });
+
+  Assist copyWith({
+    int? id,
+    String? name,
+    String? description,
+  }) {
+    return Assist(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+    );
+  }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,19 +40,21 @@ class Assist {
 
   String toJson() => json.encode(toMap());
 
-  factory Assist.fromJson(String source) => Assist.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Assist.fromJson(String source) =>
+      Assist.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'Assist(id: $id, name: $name, description: $description)';
+  String toString() =>
+      'Assist(id: $id, name: $name, description: $description)';
 
   @override
-  bool operator ==(covariant Assist other) {
+  bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.name == name &&
-      other.description == description;
+
+    return other is Assist &&
+        other.id == id &&
+        other.name == name &&
+        other.description == description;
   }
 
   @override

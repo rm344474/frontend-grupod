@@ -1,5 +1,5 @@
 import 'package:abctechapp/controller/assist_controller.dart';
-import 'package:get/instance_manager.dart';
+import 'package:get/get.dart';
 
 class HomeBind extends Bindings {
   @override

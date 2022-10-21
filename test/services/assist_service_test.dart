@@ -8,7 +8,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-
 import 'assist_service_test.mocks.dart';
 
 @GenerateMocks([AssistProviderInterface])
@@ -18,7 +17,7 @@ void main() {
 
   setUp(() async {
     provider = MockAssistProviderInterface();
-    service = AssistService(assistProvider: provider);
+    service = await AssistService().init(provider);
     String json =
         File('${Directory.current.path}/test/resources/assist_response.json')
             .readAsStringSync();
